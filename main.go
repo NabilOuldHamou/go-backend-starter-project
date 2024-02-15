@@ -31,6 +31,9 @@ func main() {
 	api.Api.GET("/users/:id", controllers.GetUserById)
 	api.Api.DELETE("/users", middleware.RequireAuth, controllers.DeleteUser)
 
+	// Files
+	api.Router.Static("assets", "./assets")
+
 	log.Println("Starting server...")
 
 	err := api.Router.Run()
